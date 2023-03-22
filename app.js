@@ -14,7 +14,7 @@ function initApp() {
     const potterHairColour = "black";
     const potterActor = "Daniel Radcliffe";
     const potterImage = "http://hp-api.herokuapp.com/images/harry.jpg";
-
+    
     console.log(
         potterName,
         potterGender,
@@ -26,4 +26,14 @@ function initApp() {
         potterActor,
         potterImage
     );
+    
+    showCharacter(potterImage, potterName, potterHouse, potterDateOfBirth, potterActor);
+}
+
+function showCharacter(Image, Name, House, DateOfBirth, Actor) {
+    console.log(Image);
+    console.log(Name);
+    console.log(House);
+    console.log(DateOfBirth);
+    console.log(Actor); 
 }
