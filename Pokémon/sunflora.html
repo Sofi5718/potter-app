@@ -4,16 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
     <title>Sunflora</title>
+
 </head>
 <body>
-    <ul id="pokemons">
-    </ul>
-    <div id="pokemon">
-        <p>First name: <span id="firstName"></span></p>
-        <p>Middle name: <span id="middelName"></span></p>
-        <p>Last name: <span id="lastName"></span></p>
-    </div>
+    <header>
+        <h1>Pokémon Characters</h1>
+    </header>
+    <main>
+        <section id="pokemon" class="grid-container">
+           <!--  <article>
+            <img src="http://hp-api.herokuapp.com/images/harry.jpg">
+                <h2>Harry Potter</h2>
+                <p>Gryffindor</p>
+                <p>Date of Birth: 31-07-1980</p>
+                <p>Played by Daniel Radcliffe</p>
+            </article> -->
+        </section>
+        <dialog id="dialog-pokemon" class="dialog-grid">
+            <img src="https://cederdorff.github.io/img/favicon.webp">
+            <section id="dialog-section">
+                <h2 id="dialog-name">Firstname Lastname</h2>
+                <h3 id="dialog-description">This is my description</h3>
+                <p id="dialog-ability"> This is my abilities</p>
+            </section>
+        <form method="dialog">
+                <button>Close</button>
+        </form>
+    </dialog>
+    </main>
+
+    <footer>
+        <p>Potter App by RACE</p>
+    </footer>
 
     <script src="sunflora.js"></script>
 </body>

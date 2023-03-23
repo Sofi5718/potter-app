@@ -1,54 +1,73 @@
 "use script";
 
-const sunFlora = {
-    name: "Sunflora",
-    description: "Sunflora is a plant Pokémon with a sunflower-like design, having a green trunk and limbs",
-    image: "https://archives.bulbagarden.net/media/upload/0/0d/0192Sunflora.png",
-    footprint: "https://archives.bulbagarden.net/media/upload/f/f8/F0192.png",
-    dexindex:192,
-    type: "Sun",
-    subtype: "Grass",
-    weaknesses: "Fire, Ice, Poison, Bug, Flying",
-    gender: "Uni sex",
-    weight: 8500,
-    height: 80,
-    generation: "Gen. II-IV",
-    spilversion: "1 version",
-    canEvolve: "boolean",
-    statsHP:0,
-    statsAttack: 0,
-    statsDefence: 0,
-    statsSpecialAttack: 2,
-    statsSpecialDefence: 0,
-    statsSpeed: 0,
+window.addEventListener("load", initApp)
+
+async function initApp() {
+    document.querySelector("#dialog").close();
+    const pokemon = await getPokemon();
+    
+    showPokemon(pokemon);
+    showPokemon(pokemon);
+    showPokemon(pokemon);
+    showPokemon(pokemon);
+
 }
+async function getPokemon() {
+    const response = await fetch("sunflora.json")
+    const data = await response.json();
+    return data;
+}
+
 function showPokemon(pokemon) {
-    document.querySelector("#firstName").textContent = student.firstName
-    document.querySelector("#middelName").textContent = student.middelName
-    document.querySelector("#lastName").textContent = student.lastName
+    document.querySelector("#pokemon").insertAdjacentHTML("beforeend",
+    /*html*/`
+    <article>
+    <img src="${pokemon.image}">
+    <h2>${pokemon.name}</h2>
+    <p>#${pokemon.dexindex}</p>
+    <p>${pokemon.type}</p>
+    </article>
+    `)
+    document.querySelector("#pokemon article:last-child").addEventListener("click", pokemonClicked);
+    
+    function pokemonClicked() {
+        showPokemonModal(pokemon);
+        
+    }
 }
-function addPokemons(pokemon) {
-    const myHtml = /*html*/ `
-    <li>name ${pokemon.name}</li> 
-    <li>description ${pokemon.description}</li>
-    <li>image ${pokemon.image}</li>
-    <li>footprint ${pokemon.footprint}</li>
-    <li>dexindex ${pokemon.dexindex}</li>
-    <li>type ${pokemon.type}</li>
-    <li>subtype ${pokemon.subtype}</li>
-    <li>gender ${pokemon.gender}</li>
-    <li>weaknesse ${pokemon.weaknesses}</li>
-    <li>height ${pokemon.height}</li>
-    <li> weight ${pokemon.weight}</li>
-    <li>spilversion ${pokemon.spilversion}</li>
-    <li>canEvolve ${pokemon.canEvolve}</li>
-    <li>generation ${pokemon.generation}</li>
-    <li>statsAttack ${pokemon.statsAttack}</li>
-    <li>statsHP ${pokemon.statsHP}</li>
-    <li>statsSpecialAttack ${pokemon.statsSpecialAttack}</li>
-    <li>statsDefence ${pokemon.statsDefence}</li>
-    <li>statsSpeed ${pokemon.statsSpeed}</li>
-    <li>statsSpecialDefence ${pokemon.statsSpecialDefence}</li>
-    `;
-    document.querySelector("#pokemons").insertAdjacentHTML("beforeend", myHtml);
+
+function showPokemonModal(pokemon) {
+
+    document.querySelector("#dialog-name").textContent = pokemon.name;
+    document.querySelector("#dialog-description").textContent = pokemon.description;
+    document.querySelector("#dialog-ability").textContent = pokemon.ability;
+ 
+    document.querySelector("#dialog-pokemon").showModal();
 }
+
+
+// function addPokemons(pokemon) {
+//     const myHtml = /*html*/ `
+//     <li>name ${pokemon.name}</li> 
+//     <li>description ${pokemon.description}</li>
+//     <li>image ${pokemon.image}</li>
+//     <li>footprint ${pokemon.footprint}</li>
+//     <li>dexindex ${pokemon.dexindex}</li>
+//     <li>type ${pokemon.type}</li>
+//     <li>subtype ${pokemon.subtype}</li>
+//     <li>gender ${pokemon.gender}</li>
+//     <li>weaknesse ${pokemon.weaknesses}</li>
+//     <li>height ${pokemon.height}</li>
+//     <li> weight ${pokemon.weight}</li>
+//     <li>spilversion ${pokemon.spilversion}</li>
+//     <li>canEvolve ${pokemon.canEvolve}</li>
+//     <li>generation ${pokemon.generation}</li>
+//     <li>statsAttack ${pokemon.statsAttack}</li>
+//     <li>statsHP ${pokemon.statsHP}</li>
+//     <li>statsSpecialAttack ${pokemon.statsSpecialAttack}</li>
+//     <li>statsDefence ${pokemon.statsDefence}</li>
+//     <li>statsSpeed ${pokemon.statsSpeed}</li>
+//     <li>statsSpecialDefence ${pokemon.statsSpecialDefence}</li>
+//     `;
+//     document.querySelector("#pokemons").insertAdjacentHTML("beforeend", myHtml);
+// }
